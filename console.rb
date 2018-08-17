@@ -24,5 +24,7 @@ screening = Screening.new({
   'capacity' => 20
   })
 
+screening.save()
+
 binding.pry
 nil
