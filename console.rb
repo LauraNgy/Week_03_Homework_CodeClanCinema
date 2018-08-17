@@ -3,6 +3,12 @@ require_relative('db/sqlrunner')
 require_relative('models/customer')
 require_relative('models/film')
 require_relative('models/screening')
+require_relative('models/ticket')
+
+Customer.delete_all()
+Film.delete_all()
+Screening.delete_all()
+Ticket.delete_all()
 
 customer = Customer.new({
   'name' => 'George',
