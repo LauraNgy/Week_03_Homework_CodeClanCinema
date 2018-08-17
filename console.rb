@@ -2,6 +2,7 @@ require('pry-byebug')
 require_relative('db/sqlrunner')
 require_relative('models/customer')
 require_relative('models/film')
+require_relative('models/screening')
 
 customer = Customer.new({
   'name' => 'George',
@@ -16,6 +17,12 @@ film = Film.new({
   })
 
 film.save()
+
+screening = Screening.new({
+  'film_id' => film.id,
+  'screening_time' => '18:00',
+  'capacity' => 20
+  })
 
 binding.pry
 nil
