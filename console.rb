@@ -32,5 +32,12 @@ screening = Screening.new({
 
 screening.save()
 
+ticket = Ticket.new({
+  'customer_id' => customer.id,
+  'screening_id' => screening.id
+  })
+
+ticket.save()
+
 binding.pry
 nil
