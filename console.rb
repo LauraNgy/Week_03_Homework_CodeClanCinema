@@ -73,10 +73,6 @@ ticket3 = Ticket.new({
   })
 ticket4 = Ticket.new({
   'customer_id' => customer2.id,
-  'screening_id' => screening2.id
-  })
-ticket5 = Ticket.new({
-  'customer_id' => customer3.id,
   'screening_id' => screening3.id
   })
 
@@ -84,7 +80,6 @@ ticket1.save()
 ticket2.save()
 ticket3.save()
 ticket4.save()
-ticket5.save()
 
 binding.pry
 nil
