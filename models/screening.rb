@@ -46,6 +46,18 @@ class Screening
         SqlRunner.run(sql, values)
       end
 
+      def tickets()
+        sql = "
+          SELECT * FROM
+            tickets
+          WHERE
+            tickets.screening_id = $1
+        "
+        values = [@id]
+        tickets = SqlRunner.run(sql, values)
+        result = Ticket.map_items(tickets)
+        return result
+      end
 
       def Screening.all()
         sql = "SELECT * FROM screenings"
