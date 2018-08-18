@@ -57,9 +57,7 @@ class Customer
           tickets
         ON
           tickets.screening_id = screenings.id
-        INNER JOIN
-          customers
-        ON
+        WHERE
           tickets.customer_id = $1
       "
       values = [@id]

@@ -57,9 +57,7 @@ class Film
           screenings
         ON
           tickets.screening_id = screenings.id
-        INNER JOIN
-          films
-        ON
+        WHERE
           screenings.film_id = $1
       "
       values = [@id]
