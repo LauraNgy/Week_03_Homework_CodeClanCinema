@@ -94,6 +94,13 @@ class Film
       result = Screening.map_items(screenings)
     end
 
+    def most_popular_time()
+      ticket_count = screenings.map {|screening| screening.tickets.count}
+      max_tickets = ticket_count.max
+      index = ticket_count.find_index(max_tickets)
+      return "The most popular time for #{@title} is #{screenings[index].screening_time}"
+    end
+
     def Film.all()
       sql = "SELECT * FROM films"
       films = SqlRunner.run(sql)
