@@ -97,6 +97,10 @@ class Customer
       return result
     end
 
+    def ticket_count()
+      return tickets.count()
+    end
+
     def Customer.all()
       sql = "SELECT * FROM customers"
       customers = SqlRunner.run(sql)
