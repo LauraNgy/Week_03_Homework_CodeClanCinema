@@ -70,6 +70,18 @@ class Film
       return customers.count
     end
 
+    def check_number_of_customers
+      different_customers = [customers[0]]
+      index = 1
+      while index < customers.count
+        if customers[index].id != customers[index-1].id
+          different_customers.push(customers[index])
+        end
+        index += 1
+      end
+      return different_customers.count
+    end
+
     def Film.all()
       sql = "SELECT * FROM films"
       films = SqlRunner.run(sql)
