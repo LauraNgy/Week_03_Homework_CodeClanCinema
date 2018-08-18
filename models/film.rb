@@ -66,7 +66,7 @@ class Film
       return result
     end
 
-    def check_number_of_customers
+    def check_number_of_tickets_bought
       return customers.count
     end
 
