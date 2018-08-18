@@ -84,6 +84,18 @@ class Customer
       return "#{@name} has #{remaining_funds} funds left."
     end
 
+    def check_number_of_tickets
+      sql = "
+      SELECT * FROM
+        tickets
+      WHERE
+        tickets.customer_id = $1
+      "
+      values = [@id]
+      tickets = SqlRunner.run(sql, values)
+      return tickets.count
+    end
+
     def Customer.all()
       sql = "SELECT * FROM customers"
       customers = SqlRunner.run(sql)
