@@ -66,6 +66,24 @@ class Customer
       return result
     end
 
+    def buy_ticket(ticket)
+      sql = "
+      SELECT
+        price
+      FROM
+        films
+      INNER JOIN
+        screenings
+      ON
+        films.id = screenings.film_id
+      WHERE
+        screenings.id = $1"
+      values = [ticket.screening_id]
+      price = SqlRunner.run(sql, values)[0]['price'].to_i
+      remaining_funds = @funds - price
+      return "#{@name} has #{remaining_funds} funds left."
+    end
+
     def Customer.all()
       sql = "SELECT * FROM customers"
       customers = SqlRunner.run(sql)
