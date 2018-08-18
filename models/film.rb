@@ -66,11 +66,11 @@ class Film
       return result
     end
 
-    def check_number_of_tickets_bought
+    def check_number_of_tickets_bought()
       return customers.count
     end
 
-    def check_number_of_customers
+    def check_number_of_customers()
       different_customers = [customers[0]]
       index = 1
       while index < customers.count
@@ -80,6 +80,18 @@ class Film
         index += 1
       end
       return different_customers.count
+    end
+
+    def screenings()
+      sql = "
+      SELECT * FROM
+        screenings
+      WHERE
+        screenings.film_id = $1
+      "
+      values = [@id]
+      screenings = SqlRunner.run(sql, values)
+      result = Screening.map_items(screenings)
     end
 
     def Film.all()
