@@ -101,6 +101,18 @@ class Customer
       return "#{@name} has #{remaining_funds} funds left."
     end
 
+    def buy_ticket(screening)
+      ticket = Ticket.new({
+        'customer_id' => @id,
+        'screening_id' => screening.id
+        })
+        if screening.in_capacity
+          update_funds(ticket)
+        else
+          return "Screening at full capacity"
+        end
+      end
+
     def Customer.all()
       sql = "SELECT * FROM customers"
       customers = SqlRunner.run(sql)
