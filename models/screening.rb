@@ -59,6 +59,14 @@ class Screening
         return result
       end
 
+      def in_capacity
+        if @capacity > tickets.count
+          return true
+        else
+          return false
+        end
+      end
+
       def Screening.all()
         sql = "SELECT * FROM screenings"
         screenings = SqlRunner.run(sql)
