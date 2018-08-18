@@ -45,6 +45,19 @@ class Ticket
       SqlRunner.run(sql, values)
     end
 
+    def screening()
+      sql = "
+        SELECT * FROM
+          screenings
+        WHERE
+          screenings.id = $1
+      "
+      values = [@screening_id]
+      screening = SqlRunner.run(sql, values)
+      result = Screening.map_items(screening)
+      return result
+    end
+
     def Ticket.all()
       sql = "SELECT * FROM tickets"
       tickets = SqlRunner.run(sql)
@@ -60,8 +73,5 @@ class Ticket
       sql = "DELETE FROM tickets"
       SqlRunner.run(sql)
     end
-
-
-
 
 end
